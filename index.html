@@ -4,34 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
+  <!--  Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind play cdn -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="src/tailwind.config.js"></script>
+
+  <!-- Alpine.js  -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
 
-  Score
-  Rules
-
-  You Picked
-  The House Picked
-
-  You Win
-  You Lose
-
-  Play Again
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
-<body>
+<body class="antialiased h-screen p-8" style="background: rgb(31,55,86); background: radial-gradient(circle at 50% 0%, rgba(31,55,86,1) 6%, rgba(20,21,57,1) 90%);">
+  <header class="mx-auto max-w-2xl flex gap-3 justify-between rounded-xl border-2 border-header-outline p-3">
+    <div>
+      <h1 class="sr-only">rock, paper, scissors</h1>
+      <img src="./images/logo.svg" alt="rock,paper,scissors">
+    </div>
+    <div class="bg-white py-3 px-9 grid rounded-lg">
+      <span class="text-score uppercase">
+        Score
+      </span>
+      <span class="text-dark font-bold text-5xl">12</span>
+    </div>
+  </header>
+  <main>
 
+    <div class="relative">
+      <img class="absolute" src="./images/bg-triangle.svg" alt="triangle">
+      <div class="relative">
+       <button class="rounded-full p-4 bg-gradient-to-b from-paper-start to-paper-end">
+         <span class="bg-white rounded-full p-4 grid place-items-center">
+           <img src="./images/icon-paper.svg" alt="paper">
+         </span>
+       </button>
+       <button class="rounded-full p-4 bg-gradient-to-b from-scissors-start to-scissors-end">
+         <span class="bg-white rounded-full p-4 grid place-items-center">
+           <img src="./images/icon-scissors.svg" alt="scissors">
+         </span>
+       </button>
+       <button class="rounded-full p-4 bg-gradient-to-b from-rock-start to-rock-end">
+         <span class="bg-white rounded-full p-4 grid place-items-center">
+           <img src="./images/icon-rock.svg" alt="rock">
+         </span>
+       </button>
+      </div>
+    </div>
 
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+    <button class="border border-white rounded-lg text-white py-1.5 px-9">Rules</button>
+    You Picked
+    The House Picked
+
+    You Win
+    You Lose
+
+    Play Again
+  </main>
+
+  <footer class="fixed bottom-0 inset-x-0 pb-2 text-center text-dark text-xs mx-auto">
+    Challenge by <a class="text-dark hover:underline hover:underline ease-in-out duration-150" href="https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH" target="_blank">Frontend Mentor</a>.
+    Coded by <a class="text-dark hover:underline hover:underline ease-in-out duration-150" href="https://www.frontendmentor.io/profile/wendyhamel" target="_blank">Wendy Hamel</a>.
+  </footer>
+
+  <script type="text/javascript" src="src/game.js"></script>
 </body>
 </html>
