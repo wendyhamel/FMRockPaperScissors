@@ -21,59 +21,63 @@
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
 
 </head>
-<body class="antialiased h-screen flex flex-col px-8 pt-8" style="background: rgb(31,55,86); background: radial-gradient(circle at 50% 0%, rgba(31,55,86,1) 6%, rgba(20,21,57,1) 90%);">
-  <header class="mx-auto w-full max-w-2xl flex gap-3 justify-between items-center rounded ring-[3px] ring-header-outline p-2.5">
-    <div class="ml-3">
-      <h1 class="sr-only">rock, paper, scissors</h1>
-      <img class="h-12" src="./images/logo.svg" alt="rock,paper,scissors">
-    </div>
-    <div class="bg-white py-2.5 px-5 grid rounded">
-      <span class="text-score uppercase text-xs tracking-widest leading-none">
+<body  x-data="rps()" class="antialiased h-screen flex flex-col px-8 pt-8" style="background: rgb(31,55,86); background: radial-gradient(circle at 50% 0%, rgba(31,55,86,1) 6%, rgba(20,21,57,1) 90%);">
+  <header class="mx-auto w-full max-w-3xl lg:mt-3.5 lg:px-10">
+   <div class="flex gap-3 justify-between items-center rounded ring-[3px] ring-header-outline p-2.5 lg:rounded-xl lg:py-4 lg:px-5">
+     <div class="ml-3 lg:ml-2">
+       <h1 class="sr-only">rock, paper, scissors</h1>
+       <img class="h-12 lg:h-full" src="./images/logo.svg" alt="rock,paper,scissors">
+     </div>
+     <div class="bg-white py-2.5 px-5 grid rounded lg:self-stretch lg:rounded-lg lg:py-4 lg:px-12">
+      <span class="text-score uppercase text-xs tracking-widest leading-none lg:text-base">
         Score
       </span>
-      <span class="text-dark font-bold text-4.5xl leading-none">12</span>
-    </div>
+       <span class="text-dark font-bold text-4.5xl leading-none text-center lg:text-6xl" x-text="score"></span>
+     </div>
+   </div>
   </header>
   <main class="grow flex flex-col mb-8 mt-7">
-    <div class="relative grow mt-20">
-<!--     <div>-->
-<!--       <div class="absolute grid place-items-center pt-16 px-12">-->
-<!--         <img src="./images/bg-triangle.svg" alt="triangle">-->
-<!--       </div>-->
-<!--       <div class="relative inset-x-0 grid grid-cols-2 gap-4">-->
-<!--         <div class="flex justify-start">-->
-<!--           <button type="button" class="w-[130px] h-[130px] rounded-full p-4 bg-gradient-to-t from-paper-start via-paper-end to-paper-end shadow-bottom shadow-paper-shadow">-->
-<!--           <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top shadow-header-outline/30">-->
-<!--             <img class="p-7" src="./images/icon-paper.svg" alt="paper">-->
-<!--           </span>-->
-<!--           </button>-->
-<!--         </div>-->
-<!--         <div class="flex justify-end">-->
-<!--           <button type="button" class="w-[130px] h-[130px] rounded-full p-4 bg-gradient-to-t from-scissors-start via-scissors-end to-scissors-end shadow-bottom shadow-scissors-shadow">-->
-<!--           <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top shadow-header-outline/30">-->
-<!--             <img class="p-7" src="./images/icon-scissors.svg" alt="scissors">-->
-<!--           </span>-->
-<!--           </button>-->
-<!--         </div>-->
-<!--         <div class="col-span-2 flex justify-center items-end">-->
-<!--           <button type="button" class="w-[130px] h-[130px] rounded-full p-4 bg-gradient-to-t from-rock-start via-rock-end to-rock-end shadow-bottom shadow-rock-shadow">-->
-<!--            <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top shadow-header-outline/30">-->
-<!--              <img class="p-7" src="./images/icon-rock.svg" alt="rock">-->
-<!--            </span>-->
-<!--           </button>-->
-<!--         </div>-->
-<!--       </div>-->
-<!--     </div>-->
-      <div>
+    <div class="relative grow my-20">
+      <div x-show="tab === 'pick'" style="display: none" class="w-full max-w-[480px] h-[280px] mx-auto">
+        <div class="relative inset-x-0 grid place-items-center mt-16 px-12 lg:mt-24">
+          <img src="./images/bg-triangle.svg" alt="triangle">
+        </div>
+        <div class="absolute top-0 inset-x-0 flex flex-col justify-between gap-4">
+          <div class="flex justify-between">
+            <div class="flex justify-start">
+              <button type="button" @click="tab = 'picked'" class="w-[130px] h-[130px] rounded-full p-4 bg-gradient-to-t from-paper-start via-paper-end to-paper-end shadow-bottom shadow-paper-shadow md:w-[202px] md:h-[204px] md:p-6">
+              <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top shadow-header-outline/30">
+                <img class="p-7" src="./images/icon-paper.svg" alt="paper">
+              </span>
+              </button>
+            </div>
+            <div class="flex justify-end">
+              <button type="button" @click="tab = 'picked'" class="w-[130px] h-[130px] rounded-full p-4 bg-gradient-to-t from-scissors-start via-scissors-end to-scissors-end shadow-bottom shadow-scissors-shadow md:w-[202px] md:h-[204px] md:p-6">
+              <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top shadow-header-outline/30">
+                <img class="p-7" src="./images/icon-scissors.svg" alt="scissors">
+              </span>
+              </button>
+            </div>
+          </div>
+          <div class="flex justify-center items-end">
+            <button type="button" @click="tab = 'picked'" class="w-[130px] h-[130px] rounded-full p-4 bg-gradient-to-t from-rock-start via-rock-end to-rock-end shadow-bottom shadow-rock-shadow md:w-[202px] md:h-[204px] md:p-6">
+             <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top shadow-header-outline/30">
+               <img class="p-7" src="./images/icon-rock.svg" alt="rock">
+             </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div x-show="tab === 'picked'" style="display: none">
         <div class="relative inset-x-0 flex justify-between gap-5">
           <div class="flex flex-col items-center justify-between gap-5">
             <div>
-              <div class="absolute rounded-full w-[132px] h-[132px] shadow-fade motion-reduce:animate-pulse"></div>
+              <div x-show="finished === true" style="display: none" class="absolute rounded-full w-[132px] h-[132px] shadow-fade motion-reduce:animate-pulse"></div>
               <div class="relative">
-                <button type="button" class="w-[132px] h-[132px] rounded-full p-4 bg-gradient-to-t from-paper-start via-paper-end to-paper-end shadow-bottom shadow-paper-shadow">
-               <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top shadow-header-outline/30">
-                 <img class="p-7" src="./images/icon-paper.svg" alt="paper">
-               </span>
+                <button type="button" @click="finished = true" class="w-[132px] h-[132px] rounded-full p-4 bg-gradient-to-t from-paper-start via-paper-end to-paper-end shadow-bottom shadow-paper-shadow">
+                 <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top shadow-header-outline/30">
+                   <img class="p-7" src="./images/icon-paper.svg" alt="paper">
+                 </span>
                 </button>
               </div>
             </div>
@@ -82,35 +86,33 @@
             </div>
           </div>
           <div class="flex flex-col items-center justify-between gap-5">
-            <button type="button" class="w-[132px] h-[132px] rounded-full p-4 bg-gradient-to-t from-scissors-start via-scissors-end to-scissors-end shadow-bottom shadow-scissors-shadow">
+            <div x-show="house === true" style="display: none">
+              <button type="button" @click="won = false" class="w-[132px] h-[132px] rounded-full p-4 bg-gradient-to-t from-scissors-start via-scissors-end to-scissors-end shadow-bottom shadow-scissors-shadow">
              <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top shadow-header-outline/30">
                <img class="p-7" src="./images/icon-scissors.svg" alt="scissors">
              </span>
-            </button>
-<!--            <div class="w-[115px] h-[115px] bg-black/10 rounded-full"></div>-->
+              </button>
+            </div>
+            <div x-show="house !== true" style="display: none" class="w-[115px] h-[115px] bg-black/10 rounded-full"></div>
             <div>
               <span class="text-white uppercase tracking-widest">the house picked</span>
             </div>
           </div>
         </div>
-        <div class="mt-20">
+        <div x-show="finished === true" style="display: none" class="mt-20">
           <div class="-mt-2 mb-5">
-<!--            <span class="block text-center uppercase text-6xl leading-none text-white font-bold">you win</span>-->
-            <span class="block text-center uppercase text-6xl leading-none text-white font-bold">you lose</span>
+            <span class="block text-center uppercase text-6xl leading-none text-white font-bold">
+              you <span x-show="won === true">win</span><span x-show="won !== true">lose</span>
+            </span>
           </div>
-          <button class="mx-auto block bg-white rounded-lg text-dark py-4 px-16 uppercase tracking-widest leading-none">play again</button>
+          <button @click="tab = 'pick'" class="mx-auto block bg-white rounded-lg text-dark py-4 px-16 uppercase tracking-widest leading-none">play again</button>
         </div>
       </div>
     </div>
 
-    <div x-data="{rules: false}" class="w-full">
+    <div class="w-full">
         <button type="button" @click="rules = true" class="mx-auto block border-2 border-light/60 rounded-lg text-white py-3 px-10 uppercase tracking-widest leading-none">Rules</button>
-        <div
-            x-show="rules === true"
-            style="display: none;"
-            x-transition
-            class="bg-white fixed inset-0"
-        >
+        <div x-show="rules === true" style="display: none;" x-transition class="bg-white fixed inset-0">
           <div class="flex flex-col h-full justify-around items-center">
             <h2 class="uppercase font-bold text-3xl text-dark">Rules</h2>
             <img src="./images/image-rules.svg" alt="rules: rock beats scissors, scissors beats paper, paper beats rock">
