@@ -45,14 +45,14 @@
         <div class="absolute top-0 inset-x-0 flex flex-col justify-between gap-4 max-w-sm mx-auto md:max-w-md lg:max-w-xl lg:px-12 lg:gap-5">
           <div class="flex justify-between">
             <div>
-              <button type="button" @click="tab = 'picked'" class="w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t from-paper-start via-paper-end to-paper-end shadow-bottom shadow-paper-shadow md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md md:shadow-paper-shadow lg:w-[202px] lg:h-[204px] lg:p-6 lg:shadow-bottom-lg lg:shadow-paper-shadow">
+              <button type="button" @click="choice = 'paper'; tab = 'picked'" class="w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t from-paper-start via-paper-end to-paper-end shadow-bottom shadow-paper-shadow md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md md:shadow-paper-shadow lg:w-[202px] lg:h-[204px] lg:p-6 lg:shadow-bottom-lg lg:shadow-paper-shadow">
               <span class="bg-light h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-lg">
                 <img class="p-7 md:p-0 lg:scale-[1.3]" src="./images/icon-paper.svg" alt="paper">
               </span>
               </button>
             </div>
             <div>
-              <button type="button" @click="tab = 'picked'" class="w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t from-scissors-start via-scissors-end to-scissors-end shadow-bottom shadow-scissors-shadow md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md md:shadow-scissors-shadow lg:w-[202px] lg:h-[204px] lg:p-6 lg:shadow-bottom-lg lg:shadow-scissors-shadow">
+              <button type="button" @click="choice = 'scissors'; tab = 'picked'" class="w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t from-scissors-start via-scissors-end to-scissors-end shadow-bottom shadow-scissors-shadow md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md md:shadow-scissors-shadow lg:w-[202px] lg:h-[204px] lg:p-6 lg:shadow-bottom-lg lg:shadow-scissors-shadow">
               <span class="bg-light h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-lg">
                 <img class="p-7 md:p-0 lg:scale-[1.3]" src="./images/icon-scissors.svg" alt="scissors">
               </span>
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="flex justify-center items-end">
-            <button type="button" @click="tab = 'picked'" class="w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t from-rock-start via-rock-end to-rock-end shadow-bottom shadow-rock-shadow md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md md:shadow-rock-shadow lg:w-[202px] lg:h-[204px] lg:p-6 lg:shadow-bottom-lg lg:shadow-rock-shadow">
+            <button type="button" @click="choice = 'rock'; tab = 'picked'" class="w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t from-rock-start via-rock-end to-rock-end shadow-bottom shadow-rock-shadow md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md md:shadow-rock-shadow lg:w-[202px] lg:h-[204px] lg:p-6 lg:shadow-bottom-lg lg:shadow-rock-shadow">
              <span class="bg-light h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-lg">
                <img class="p-7 md:p-0 lg:scale-[1.3]" src="./images/icon-rock.svg" alt="rock">
              </span>
@@ -77,11 +77,11 @@
             <div>
               <div x-show="won === true" style="display: none" class="absolute rounded-full w-[130px] h-[131px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[162px] lg:w-[296px] lg:h-[302px]"></div>
               <div class="relative">
-                <button type="button" class="w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t from-paper-start via-paper-end to-paper-end shadow-bottom shadow-paper-shadow md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md md:shadow-paper-shadow lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl lg:shadow-paper-shadow">
+                <div :class="'w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl ' + chosen.colors">
                  <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-xl">
-                   <img class="p-7 md:p-0 lg:scale-[1.9]" src="./images/icon-paper.svg" alt="paper">
+                   <img class="p-7 md:p-0 lg:scale-[1.9]" :src="chosen.image" alt="paper">
                  </span>
-                </button>
+                </div>
               </div>
             </div>
             <div>
@@ -91,15 +91,15 @@
           <div class="flex flex-col items-center justify-between gap-5 lg:flex-col-reverse lg:gap-12">
             <div>
               <div x-show="lose === true" style="display: none" class="absolute rounded-full w-[130px] h-[131px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[162px] lg:w-[296px] lg:h-[302px]"></div>
-              <div x-show="house === true" class="relative" style="display: none">
-                <button type="button" class="w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t from-scissors-start via-scissors-end to-scissors-end shadow-bottom shadow-scissors-shadow md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md md:shadow-scissors-shadow lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl lg:shadow-scissors-shadow">
+              <div x-show="ready === true" class="relative" style="display: none">
+                <div :class="'w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl ' + housePick.colors">
                <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-xl">
-                 <img class="p-7 md:p-0 lg:scale-[1.9]" src="./images/icon-scissors.svg" alt="scissors">
+                 <img class="p-7 md:p-0 lg:scale-[1.9]" :src="housePick.image" alt="scissors">
                </span>
-                </button>
+                </div>
               </div>
             </div>
-            <div x-show="house !== true" style="display: none" class="w-[115px] h-[115px] bg-black/10 rounded-full mt-1.5 md:w-[145px] md:h-[145px] md:mt-2 lg:w-[225px] lg:h-[225px] lg:mt-0 lg:mb-8"></div>
+            <div x-show="ready !== true" style="display: none" class="w-[115px] h-[115px] bg-black/10 rounded-full -mt-2 md:w-[145px] md:h-[145px] md:-mt-3 lg:w-[225px] lg:h-[225px] lg:mt-5"></div>
             <div>
               <span class="text-white uppercase tracking-widest font-bold md:text-lg lg:text-2xl">the house picked</span>
             </div>
@@ -111,7 +111,7 @@
             <span x-show="lose === true" class="block text-center uppercase text-6xl leading-none text-white font-bold">you lose</span>
             <span x-show="tie === true" class="block text-center uppercase text-6xl leading-none text-white font-bold">tie</span>
           </div>
-          <button @click="tab = 'pick'" class="mx-auto block bg-white rounded-lg text-dark py-4 px-16 uppercase tracking-widest leading-none hover:text-rock-start ease-in-out duration-150">play again</button>
+          <button @click="reset()" class="mx-auto block bg-white rounded-lg text-dark py-4 px-16 uppercase tracking-widest leading-none hover:text-rock-start ease-in-out duration-150">play again</button>
         </div>
       </div>
     </div>
@@ -136,7 +136,6 @@
           </div>
         </div>
     </div>
-
   </main>
 
   <footer class="mx-auto pb-2 text-center text-dark text-xs mx-auto">
