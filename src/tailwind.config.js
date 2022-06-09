@@ -8,8 +8,14 @@ tailwind.config = {
               '4.5xl' : '2.5rem'
             },
             boxShadow: {
-              'top' : 'inset 0 5px 2px 0 rgb(0,0,0)',
+              'top' : 'inset 0 5px 2px 0 rgba(96,110,133,0.3)',
+              'top-md' : 'inset 0 6px 2px 0 rgba(96,110,133,0.3)',
+              'top-lg' : 'inset 0 8px 2px 0 rgba(96,110,133,0.3)',
+              'top-xl' : 'inset 0 12px 2px 0 rgba(96,110,133,0.3)',
               'bottom' : 'inset 0 -5px 0 0 rgb(0,0,0)',
+              'bottom-md' : 'inset 0 -6px 0 0 rgb(0,0,0)',
+              'bottom-lg' : 'inset 0 -8px 0 0 rgb(0,0,0)',
+              'bottom-xl' : 'inset 0 -12px 0 0 rgb(0,0,0)',
               'fade' : '0px 0px 0px 18px rgba(255,255,255,0.04), 0px 0px 0px 46px rgba(255,255,255,0.035), 0px 0px 0px 80px rgba(255,255,255,0.02)'
             },
             colors: {
@@ -27,7 +33,7 @@ tailwind.config = {
                 'cyan-start' : 'hsl(189, 59%, 53%)',
                 'cyan-end' : 'hsl(189, 58%, 57%)',
 
-                'light' : 'hsl(220,27%,94%)',
+                'light' : 'hsl(0,0%,90%)',
                 'dark' : 'hsl(229, 25%, 31%)',
                 'score' : 'hsl(229, 64%, 46%)',
                 'header-outline' : 'hsl(217, 16%, 45%)',
