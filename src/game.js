@@ -45,7 +45,7 @@ window.rps = function () {
         housePick() {
             let randomPickOptionNames = Object.keys(this.options);
             let randomPick = Math.floor(Math.random() * randomPickOptionNames.length );
-            setTimeout(function() { this.showHousePick() }.bind(this) ,800);
+            setTimeout(function() { this.showHousePick() }.bind(this) ,500);
             return this.house = this.options[randomPickOptionNames[randomPick]];
         },
 
