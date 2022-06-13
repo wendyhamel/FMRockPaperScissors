@@ -83,7 +83,7 @@
             <div>
               <div x-show="game === 'won'" style="display: none" class="absolute rounded-full w-[130px] h-[132px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[163px] lg:w-[296px] lg:h-[302px]"></div>
               <div class="relative">
-                <div :class="'w-[130px] h-[132px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[163px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl ' + picked.colors">
+                <div class="w-[130px] h-[132px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[163px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl" :class="picked.colors">
                  <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-xl">
                    <img class="p-7 md:p-0 lg:scale-[1.9]" :src="picked.image" alt="paper">
                  </span>
@@ -99,7 +99,7 @@
             <div>
               <div x-show="game === 'lost'" style="display: none" class="absolute rounded-full w-[130px] h-[131px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[162px] lg:w-[296px] lg:h-[302px]"></div>
               <div class="relative ease-out duration-300" :class="ready ? 'opacity-100 scale-1' : 'opacity-0 scale-0'">
-                <div :class="'w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl ' + house.colors">
+                <div class="'w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl" :class="house.colors">
                <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-xl">
                  <img class="p-7 md:p-0 lg:scale-[1.9]" :src="house.image" alt="scissors">
                </span>
