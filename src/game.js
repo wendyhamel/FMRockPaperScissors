@@ -1,8 +1,8 @@
 window.rps = function () {
     return {
         tab: 'pick',
-        choice: 'paper',
-        house: 'paper',
+        picked: [],
+        house: [],
         finished: false,
         rules: false,
         ready: false,
@@ -34,48 +34,41 @@ window.rps = function () {
         ],
 
         pick(choice) {
-            this.choice = choice;
             this.tab = 'picked';
-            this.chosen()
-        },
-
-        chosen() {
-            this.chosenArray = this.options.filter(option => option.name === this.choice);
-            return this.chosenArray[0];
+            this.chosenArray = this.options.filter(option => option.name === choice);
+            this.housePick()
+            return this.picked = this.chosenArray[0];
         },
 
         housePick() {
-            this.houseArray = this.options.filter(option => option.name === this.house);
-            // this.houseArray = this.options.filter(option => option === this.options[Math.floor(Math.random() * this.options.length)]);
-            return this.houseArray[0];
+            this.houseArray = this.options.filter(option => option === this.options[Math.floor(Math.random() * this.options.length)]);
+            setTimeout(function() { this.showHousePick() }.bind(this) ,1000);
+            return this.house = this.houseArray[0];
         },
 
-        wait() {
-            setTimeout(function() {this.ready = true; }.bind(this) ,1500);
+        showHousePick() {
+            this.ready = true;
+            setTimeout(function() { this.compare(this.picked, this.house) }.bind(this) ,1500);
         },
 
-        compare(player, house, score) {
-            console.log('here')
-            // if (player.name === house.name) {
-            //    return {
-            //        game : 'tie',
-            //        finished : true,
-            //    }
-            // }
-            // if (player.defeats === house.name) {
-            //     return {
-            //         game : 'won',
-            //         newScore : score ++,
-            //         finished : true,
-            //     }
-            // }
-            // if (player.loses === house.name) {
-            //    return {
-            //        game : 'lost',
-            //        newScore : score --,
-            //        finished : true,
-            //    }
-            // }
+        compare(player, house) {
+            if (player.name === house.name) {
+                this.game = 'tie';
+                this.finished = true;
+                return this.score;
+            }
+            if (player.defeats === house.name) {
+                this.game = 'won';
+                this.score ++;
+                this.finished = true;
+                return this.score;
+            }
+            if (player.loses === house.name) {
+                this.game = 'lost';
+                this.score --;
+                this.finished = true;
+                return this.score;
+            }
         },
 
         reset() {
@@ -83,13 +76,7 @@ window.rps = function () {
             this.finished = false;
             this.rules = false;
             this.ready = false;
-            this.won = false;
-            this.lost = false;
-            this.tie = false;
-        }
-        // animate() {
-        //     this.animation = true;
-        //     setTimeout(function() {this.animation = false}.bind(this) ,1000);
-        // },
+            this.game = null;
+        },
     }
 }

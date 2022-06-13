@@ -38,7 +38,11 @@
   </header>
   <main class="grow flex flex-col mb-8 mt-7">
     <div class="relative grow my-20 md:my-10">
-      <div x-show="tab === 'pick'" style="display: none" class="w-full max-w-[480px] h-[280px] mx-auto">
+      <div
+            x-show="tab === 'pick'"
+            style="display: none"
+            class="w-full max-w-[480px] h-[280px] mx-auto"
+      >
         <div class="relative inset-x-0 grid place-items-center mt-16 lg:mt-24">
           <img class="w-[240px] md:w-[320px]" src="./images/bg-triangle.svg" alt="triangle">
         </div>
@@ -68,7 +72,16 @@
           </div>
         </div>
       </div>
-      <div x-show="tab === 'picked'" style="display: none" x-transition>
+      <div
+            x-show="tab === 'picked'"
+            style="display: none"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 scale-90"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-90"
+      >
         <div
             class="relative inset-x-0 flex justify-between gap-5 max-w-[480px] mx-auto lg:px-10 ease-out duration-300"
             :class="finished ? 'lg:max-w-5xl' : 'lg:max-w-3xl'"
@@ -77,9 +90,9 @@
             <div>
               <div x-show="game === 'won'" style="display: none" class="absolute rounded-full w-[130px] h-[132px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[163px] lg:w-[296px] lg:h-[302px]"></div>
               <div class="relative">
-                <div :class="'w-[130px] h-[132px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[163px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl ' + chosen.colors">
+                <div :class="'w-[130px] h-[132px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[163px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl ' + picked.colors">
                  <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-xl">
-                   <img class="p-7 md:p-0 lg:scale-[1.9]" :src="chosen.image" alt="paper">
+                   <img class="p-7 md:p-0 lg:scale-[1.9]" :src="picked.image" alt="paper">
                  </span>
                 </div>
               </div>
@@ -93,9 +106,9 @@
             <div>
               <div x-show="game === 'lost'" style="display: none" class="absolute rounded-full w-[130px] h-[131px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[162px] lg:w-[296px] lg:h-[302px]"></div>
               <div class="relative ease-out duration-300" :class="ready ? 'opacity-100 scale-1' : 'opacity-0 scale-0'">
-                <div :class="'w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl ' + housePick.colors">
+                <div :class="'w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl ' + house.colors">
                <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-xl">
-                 <img class="p-7 md:p-0 lg:scale-[1.9]" :src="housePick.image" alt="scissors">
+                 <img class="p-7 md:p-0 lg:scale-[1.9]" :src="house.image" alt="scissors">
                </span>
                 </div>
               </div>
@@ -105,7 +118,7 @@
             </div>
           </div>
         </div>
-        <div x-show="finished === true" style="display: none" class="mt-20 lg:absolute lg:inset-0 lg:mt-40">
+        <div x-show="finished === true" x-transition style="display: none" class="mt-20 lg:absolute lg:inset-0 lg:mt-40">
           <div class="-mt-2 mb-5">
             <span x-show="game === 'won'" class="block text-center uppercase text-6xl leading-none text-white font-bold">you win</span>
             <span x-show="game === 'lost'" class="block text-center uppercase text-6xl leading-none text-white font-bold">you lose</span>
