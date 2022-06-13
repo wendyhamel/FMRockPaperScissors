@@ -55,9 +55,9 @@
             <template x-for="option in options">
               <div class="mx-auto">
                 <button type="button" @click="pick(option)" class="w-[130px] h-[132px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[163px] md:p-5 md:shadow-bottom-md lg:w-[202px] lg:h-[204px] lg:p-6 lg:shadow-bottom-lg" :class="option.colors">
-              <span class="bg-light h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-lg">
-                <img class="p-7 md:p-0 lg:scale-[1.3]" :src="option.image" alt="paper">
-              </span>
+                  <span class="bg-light h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-lg">
+                    <img class="p-7 md:p-0 lg:scale-[1.3]" :src="option.image" alt="paper">
+                  </span>
                 </button>
               </div>
             </template>
