@@ -42,13 +42,13 @@ window.rps = function () {
 
         housePick() {
             this.houseArray = this.options.filter(option => option === this.options[Math.floor(Math.random() * this.options.length)]);
-            setTimeout(function() { this.showHousePick() }.bind(this) ,1000);
+            setTimeout(function() { this.showHousePick() }.bind(this) ,800);
             return this.house = this.houseArray[0];
         },
 
         showHousePick() {
             this.ready = true;
-            setTimeout(function() { this.compare(this.picked, this.house) }.bind(this) ,1500);
+            setTimeout(function() { this.compare(this.picked, this.house) }.bind(this) ,1000);
         },
 
         compare(player, house) {
@@ -72,11 +72,12 @@ window.rps = function () {
         },
 
         reset() {
-            this.tab = 'pick';
+            this.tab = false;
             this.finished = false;
             this.rules = false;
             this.ready = false;
             this.game = null;
+            setTimeout(function() { this.tab = 'pick'; }.bind(this) ,750);
         },
     }
 }
