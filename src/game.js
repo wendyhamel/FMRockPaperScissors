@@ -1,5 +1,6 @@
 window.rps = function () {
     return {
+
         tab: 'pick',
         picked: [],
         house: [],
@@ -7,8 +8,7 @@ window.rps = function () {
         rules: false,
         ready: false,
         game: null,
-        score: 12,
-
+        score: Alpine.$persist(12),
         options: {
             paper:
                 {
@@ -16,7 +16,6 @@ window.rps = function () {
                     image: './images/icon-paper.svg',
                     colors: 'from-paper-start via-paper-end to-paper-end shadow-paper-shadow md:shadow-paper-shadow lg:shadow-paper-shadow',
                     defeats: 'rock',
-                    loses: 'scissors',
                 },
             scissors:
                 {
@@ -24,7 +23,6 @@ window.rps = function () {
                     image: './images/icon-scissors.svg',
                     colors: 'from-scissors-start via-scissors-end to-scissors-end shadow-scissors-shadow md:shadow-scissors-shadow lg:shadow-scissors-shadow',
                     defeats: 'paper',
-                    loses: 'rock',
                 },
             rock:
                 {
@@ -32,7 +30,6 @@ window.rps = function () {
                     image: './images/icon-rock.svg',
                     colors: 'from-rock-start via-rock-end to-rock-end shadow-rock-shadow md:shadow-rock-shadow lg:shadow-rock-shadow',
                     defeats: 'scissors',
-                    loses: 'paper',
                 },
         },
 
@@ -65,14 +62,26 @@ window.rps = function () {
                 this.score ++;
                 this.finished = true;
                 return this.score;
-            }
-            if (player.loses === house.name) {
+            } else {
                 this.game = 'lost';
                 this.score --;
                 this.finished = true;
                 return this.score;
             }
         },
+
+        // get tiedGame() {
+        //     this.options.filter(option => option.name === this.house.name);
+        //     return this.score;
+        // },
+        // get wonGame() {
+        //     this.options.filter(option => option.defeats === this.house.name);
+        //     return this.score ++;
+        // },
+        // get lostGame() {
+        //     this.options.filter(option => ! option.defeats === this.house.name && option.name === this.house.name);
+        //     return this.score --;
+        // },
 
         reset() {
             this.tab = false;
