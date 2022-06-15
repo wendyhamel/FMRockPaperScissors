@@ -1,6 +1,5 @@
 window.rps = function () {
     return {
-
         tab: 'pick',
         picked: [],
         house: [],
