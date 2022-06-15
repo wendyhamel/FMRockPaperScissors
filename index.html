@@ -99,7 +99,7 @@
             </div>
           </div>
           <div class="relative flex flex-col items-center justify-between gap-5 lg:flex-col-reverse lg:gap-12">
-            <div class="absolute right-0 inset-b-0 w-[115px] h-[115px] bg-black/10 rounded-full mr-4 mt-2 md:w-[145px] md:h-[145px] md:mr-2.5 lg:w-[225px] lg:h-[225px] lg:mr-6 lg:mb-8 ease-out duration-300 animate-scale" :class="ready ? 'opacity-0 scale-0' : 'opacity-100 scale-1'"></div>
+            <div class="absolute right-0 inset-b-0 w-[115px] h-[115px] bg-black/10 rounded-full mr-4 mt-2 md:w-[145px] md:h-[145px] md:mr-2.5 lg:w-[225px] lg:h-[225px] lg:mr-6 lg:mb-8 ease-out duration-300 motion-reduce:animate-scale" :class="ready ? 'opacity-0 scale-0' : 'opacity-100 scale-1'"></div>
             <div>
               <div x-show="game === 'lose'" x-transition.scale style="display: none" class="absolute rounded-full w-[130px] h-[131px] bg-white/20 shadow-fade motion-reduce:animate-pulse-fade md:w-[160px] md:h-[163px] lg:w-[296px] lg:h-[302px]"></div>
               <div class="relative ease-out duration-300" :class="ready ? 'opacity-100 scale-1' : 'opacity-0 scale-0'">
