@@ -74,8 +74,8 @@ window.rpsls = function () {
                 return this.bonusScore ++;
             } else {
                 this.bonusGame = 'lost';
-                this.score --;
-                return this.score < 0 ? this.score = 0 : this.score;
+                this.bonusScore --;
+                return this.bonusScore < 0 ? this.bonusScore = 0 : this.bonusScore;
             }
         },
 
