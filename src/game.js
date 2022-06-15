@@ -56,10 +56,10 @@ window.rps = function () {
                 this.game = 'tie';
                 return this.score;
             } else if (player.defeats === house.name) {
-                this.game = 'won';
+                this.game = 'win';
                 return this.score ++;
             } else {
-                this.game = 'lost';
+                this.game = 'lose';
                 this.score --;
                 return this.score < 0 ? this.score = 0 : this.score;
             }

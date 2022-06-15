@@ -85,7 +85,7 @@
         >
           <div class="flex flex-col items-center justify-between gap-5 lg:flex-col-reverse lg:gap-12">
             <div>
-              <div x-show="game === 'won'" x-transition.scale style="display: none" class="absolute rounded-full w-[130px] h-[132px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[163px] lg:w-[296px] lg:h-[302px]"></div>
+              <div x-show="game === 'win'" x-transition.scale style="display: none" class="absolute rounded-full w-[130px] h-[132px] bg-white/20 shadow-fade motion-reduce:animate-pulse-fade md:w-[160px] md:h-[163px] lg:w-[296px] lg:h-[302px]"></div>
               <div class="relative">
                 <div class="w-[130px] h-[132px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[163px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl" :class="picked.colors">
                  <div class="bg-white h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-xl">
@@ -101,7 +101,7 @@
           <div class="relative flex flex-col items-center justify-between gap-5 lg:flex-col-reverse lg:gap-12">
             <div class="absolute right-0 inset-b-0 w-[115px] h-[115px] bg-black/10 rounded-full mr-4 mt-2 md:w-[145px] md:h-[145px] md:mr-2.5 lg:w-[225px] lg:h-[225px] lg:mr-6 lg:mb-8 ease-out duration-300 animate-scale" :class="ready ? 'opacity-0 scale-0' : 'opacity-100 scale-1'"></div>
             <div>
-              <div x-show="game === 'lost'" x-transition.scale style="display: none" class="absolute rounded-full w-[130px] h-[131px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[163px] lg:w-[296px] lg:h-[302px]"></div>
+              <div x-show="game === 'lose'" x-transition.scale style="display: none" class="absolute rounded-full w-[130px] h-[131px] bg-white/20 shadow-fade motion-reduce:animate-pulse-fade md:w-[160px] md:h-[163px] lg:w-[296px] lg:h-[302px]"></div>
               <div class="relative ease-out duration-300" :class="ready ? 'opacity-100 scale-1' : 'opacity-0 scale-0'">
                 <div class="w-[130px] h-[132px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[163px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl" :class="house.colors">
                    <div class="bg-white h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-xl">
@@ -117,7 +117,7 @@
         </div>
         <div x-show="finished === true" x-transition style="display: none" class="mt-20 lg:absolute lg:inset-0 lg:mt-40">
           <div class="-mt-2 mb-5">
-            <h2 class="block text-center uppercase text-6xl leading-none text-white font-bold" x-text="game === 'won' || game === 'lost' ? 'you ' + game : game"></h2>
+            <h2 class="block text-center uppercase text-6xl leading-none text-white font-bold" x-text="game === 'win' || game === 'lose' ? 'you ' + game : game"></h2>
           </div>
           <button @click="reset()" class="mx-auto block bg-white rounded-lg text-dark py-4 px-16 uppercase tracking-widest leading-none hover:text-rock-start ease-in-out duration-150">play again</button>
         </div>

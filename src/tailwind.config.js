@@ -8,10 +8,12 @@ tailwind.config = {
               '4.5xl' : '2.5rem'
             },
             boxShadow: {
+              'top-sm' : 'inset 0 4px 2px 0 rgba(96,110,133,0.3)',
               'top' : 'inset 0 5px 2px 0 rgba(96,110,133,0.3)',
               'top-md' : 'inset 0 6px 2px 0 rgba(96,110,133,0.3)',
               'top-lg' : 'inset 0 8px 2px 0 rgba(96,110,133,0.3)',
               'top-xl' : 'inset 0 12px 2px 0 rgba(96,110,133,0.3)',
+              'bottom-sm' : 'inset 0 -4px 0 0 rgb(0,0,0)',
               'bottom' : 'inset 0 -5px 0 0 rgb(0,0,0)',
               'bottom-md' : 'inset 0 -6px 0 0 rgb(0,0,0)',
               'bottom-lg' : 'inset 0 -8px 0 0 rgb(0,0,0)',
@@ -22,10 +24,15 @@ tailwind.config = {
                 scale: {
                     '0%, 100%': { transform: 'scale(1.1)' },
                     '50%': { transform: 'scale(0.8)' },
+                },
+                pulseFade: {
+                    '0%, 100%': { transform: 'scale(1.3)', opacity: 1 },
+                    '50%': { transform: 'scale(0.8)', opacity: 0.6 },
                 }
             },
             animation: {
                 scale: 'scale 1s ease-in-out infinite',
+                'pulse-fade': 'pulseFade 1.5s ease-in-out infinite',
             },
             colors: {
                 'paper-shadow' : 'rgb(38, 68, 170)',

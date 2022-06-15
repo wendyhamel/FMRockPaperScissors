@@ -15,6 +15,7 @@ window.rpsls = function () {
                     image: './images/icon-scissors.svg',
                     colors: 'from-scissors-start via-scissors-end to-scissors-end shadow-scissors-shadow md:shadow-scissors-shadow lg:shadow-scissors-shadow',
                     defeats: ['paper', 'lizard'],
+                    position: 'col-span-2 place-self-center translate-y-6',
                 },
             spock:
                 {
@@ -22,6 +23,7 @@ window.rpsls = function () {
                     image: './images/icon-spock.svg',
                     colors: 'from-spock-start via-spock-end to-spock-end shadow-spock-shadow md:shadow-spock-shadow lg:shadow-spock-shadow',
                     defeats: ['scissors', 'rock'],
+                    position: 'place-self-start md:-translate-y-4',
                 },
             paper:
                 {
@@ -29,6 +31,7 @@ window.rpsls = function () {
                     image: './images/icon-paper.svg',
                     colors: 'from-paper-start via-paper-end to-paper-end shadow-paper-shadow md:shadow-paper-shadow lg:shadow-paper-shadow',
                     defeats: ['rock', 'spock'],
+                    position: 'place-self-end md:-translate-y-4',
                 },
             lizard:
                 {
@@ -36,6 +39,7 @@ window.rpsls = function () {
                     image: './images/icon-lizard.svg',
                     colors: 'from-lizard-start via-lizard-end to-lizard-end shadow-lizard-shadow md:shadow-lizard-shadow lg:shadow-lizard-shadow',
                     defeats: ['spock', 'paper'],
+                    position: 'place-self-end mr-2',
                 },
             rock:
                 {
@@ -43,6 +47,7 @@ window.rpsls = function () {
                     image: './images/icon-rock.svg',
                     colors: 'from-rock-start via-rock-end to-rock-end shadow-rock-shadow md:shadow-rock-shadow lg:shadow-rock-shadow',
                     defeats: ['scissors', 'lizard'],
+                    position: 'place-self-start ml-2',
                 },
         },
 
@@ -70,10 +75,10 @@ window.rpsls = function () {
                 this.bonusGame = 'tie';
                 return this.bonusScore;
             } else if (player.defeats.find(option => option === house.name)) {
-                this.bonusGame = 'won';
+                this.bonusGame = 'win';
                 return this.bonusScore ++;
             } else {
-                this.bonusGame = 'lost';
+                this.bonusGame = 'lose';
                 this.bonusScore --;
                 return this.bonusScore < 0 ? this.bonusScore = 0 : this.bonusScore;
             }
