@@ -19,13 +19,13 @@ tailwind.config = {
               'fade' : '0px 0px 0px 18px rgba(255,255,255,0.04), 0px 0px 0px 46px rgba(255,255,255,0.035), 0px 0px 0px 80px rgba(255,255,255,0.02)'
             },
             keyframes: {
-                bubble: {
+                scale: {
                     '0%, 100%': { transform: 'scale(1.1)' },
                     '50%': { transform: 'scale(0.8)' },
                 }
             },
             animation: {
-                bubble: 'bubble 1s ease-in-out infinite',
+                scale: 'scale 1s ease-in-out infinite',
             },
             colors: {
                 'paper-shadow' : 'rgb(38, 68, 170)',
@@ -39,8 +39,10 @@ tailwind.config = {
                 'scissors-end' : 'hsl(40, 84%, 53%)',
                 'lizard-start' : 'hsl(261, 73%, 60%)',
                 'lizard-end' : 'hsl(261, 72%, 63%)',
-                'cyan-start' : 'hsl(189, 59%, 53%)',
-                'cyan-end' : 'hsl(189, 58%, 57%)',
+                'lizard-shadow' : 'rgb(93, 52, 162)',
+                'spock-start' : 'hsl(189, 59%, 53%)',
+                'spock-end' : 'hsl(189, 58%, 57%)',
+                'spock-shadow' : 'rgb(0, 143, 170)',
 
                 'light' : 'hsl(0,0%,90%)',
                 'dark' : 'hsl(229, 25%, 31%)',
