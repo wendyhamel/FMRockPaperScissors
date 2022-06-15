@@ -60,7 +60,8 @@ window.rps = function () {
                 return this.score ++;
             } else {
                 this.game = 'lost';
-                return this.score --;
+                this.score --;
+                return this.score < 0 ? this.score = 0 : this.score;
             }
         },
 
