@@ -26,13 +26,13 @@ tailwind.config = {
                     '50%': { transform: 'scale(0.8)' },
                 },
                 pulseFade: {
-                    '0%, 100%': { transform: 'scale(1.3)', opacity: 1 },
+                    '0%, 100%': { transform: 'scale(1.2)', opacity: 1 },
                     '50%': { transform: 'scale(0.8)', opacity: 0.6 },
                 }
             },
             animation: {
                 scale: 'scale 1s ease-in-out infinite',
-                'pulse-fade': 'pulseFade 1.5s ease-in-out infinite',
+                'pulse-fade': 'pulseFade 2s ease-in-out infinite',
             },
             colors: {
                 'paper-shadow' : 'rgb(38, 68, 170)',
