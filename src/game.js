@@ -42,7 +42,7 @@ window.rps = function () {
         housePick() {
             let randomPickOptionNames = Object.keys(this.options);
             let randomPick = Math.floor(Math.random() * randomPickOptionNames.length );
-            setTimeout(function() { this.showHousePick() }.bind(this) ,500);
+            setTimeout(function() { this.showHousePick() }.bind(this) ,1500);
             return this.house = this.options[randomPickOptionNames[randomPick]];
         },
 
@@ -52,36 +52,18 @@ window.rps = function () {
         },
 
         compare(player, house) {
+            this.finished = true;
             if (player.name === house.name) {
                 this.game = 'tie';
-                this.finished = true;
                 return this.score;
-            }
-            if (player.defeats === house.name) {
+            } else if (player.defeats === house.name) {
                 this.game = 'won';
-                this.score ++;
-                this.finished = true;
-                return this.score;
+                return this.score ++;
             } else {
                 this.game = 'lost';
-                this.score --;
-                this.finished = true;
-                return this.score;
+                return this.score --;
             }
         },
-
-        // get tiedGame() {
-        //     this.options.filter(option => option.name === this.house.name);
-        //     return this.score;
-        // },
-        // get wonGame() {
-        //     this.options.filter(option => option.defeats === this.house.name);
-        //     return this.score ++;
-        // },
-        // get lostGame() {
-        //     this.options.filter(option => ! option.defeats === this.house.name && option.name === this.house.name);
-        //     return this.score --;
-        // },
 
         reset() {
             this.tab = false;

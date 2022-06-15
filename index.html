@@ -42,7 +42,7 @@
   </header>
   <main class="grow flex flex-col mb-8 mt-7">
     <div class="relative grow flex justify-center my-20 md:my-10">
-      <div
+      <section
             x-show="tab === 'pick'"
             style="display: none"
             x-transition:enter="transition ease-out duration-75"
@@ -67,8 +67,8 @@
             </template>
           </div>
         </div>
-      </div>
-      <div
+      </section>
+      <section
             x-show="tab === 'picked'"
             style="display: none"
             x-transition:enter="transition ease-out duration-300"
@@ -85,7 +85,7 @@
         >
           <div class="flex flex-col items-center justify-between gap-5 lg:flex-col-reverse lg:gap-12">
             <div>
-              <div x-show="game === 'won'" style="display: none" class="absolute rounded-full w-[130px] h-[132px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[163px] lg:w-[296px] lg:h-[302px]"></div>
+              <div x-show="game === 'won'" x-transition.scale style="display: none" class="absolute rounded-full w-[130px] h-[132px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[163px] lg:w-[296px] lg:h-[302px]"></div>
               <div class="relative">
                 <div class="w-[130px] h-[132px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[163px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl" :class="picked.colors">
                  <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-xl">
@@ -95,13 +95,13 @@
               </div>
             </div>
             <div>
-              <span class="text-white uppercase tracking-widest font-bold md:text-lg lg:text-2xl">you picked</span>
+              <h2 class="text-white uppercase tracking-widest font-bold md:text-lg lg:text-2xl">you picked</h2>
             </div>
           </div>
           <div class="relative flex flex-col items-center justify-between gap-5 lg:flex-col-reverse lg:gap-12">
-            <div class="absolute right-0 inset-b-0 w-[115px] h-[115px] bg-black/10 rounded-full mr-4 mt-2 md:w-[145px] md:h-[145px] md:mr-2.5 lg:w-[225px] lg:h-[225px] lg:mr-6 lg:mb-8 ease-out duration-300" :class="ready ? 'opacity-0 scale-0' : 'opacity-100 scale-1'"></div>
+            <div class="absolute right-0 inset-b-0 w-[115px] h-[115px] bg-black/10 rounded-full mr-4 mt-2 md:w-[145px] md:h-[145px] md:mr-2.5 lg:w-[225px] lg:h-[225px] lg:mr-6 lg:mb-8 ease-out duration-300 animate-bubble" :class="ready ? 'opacity-0 scale-0' : 'opacity-100 scale-1'"></div>
             <div>
-              <div x-show="game === 'lost'" style="display: none" class="absolute rounded-full w-[130px] h-[131px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[162px] lg:w-[296px] lg:h-[302px]"></div>
+              <div x-show="game === 'lost'" x-transition.scale style="display: none" class="absolute rounded-full w-[130px] h-[131px] shadow-fade motion-reduce:animate-pulse md:w-[160px] md:h-[162px] lg:w-[296px] lg:h-[302px]"></div>
               <div class="relative ease-out duration-300" :class="ready ? 'opacity-100 scale-1' : 'opacity-0 scale-0'">
                 <div class="'w-[130px] h-[131px] rounded-full p-4 bg-gradient-to-t shadow-bottom md:w-[160px] md:h-[162px] md:p-5 md:shadow-bottom-md lg:w-[296px] lg:h-[302px] lg:p-9 lg:shadow-bottom-xl" :class="house.colors">
                <span class="bg-white h-full w-full rounded-full grid place-items-center shadow-top md:shadow-top-md lg:shadow-top-xl">
@@ -111,22 +111,20 @@
               </div>
             </div>
             <div>
-              <span class="text-white uppercase tracking-widest font-bold md:text-lg lg:text-2xl">the house picked</span>
+              <h2 class="text-white uppercase tracking-widest font-bold md:text-lg lg:text-2xl">the house picked</h2>
             </div>
           </div>
         </div>
         <div x-show="finished === true" x-transition style="display: none" class="mt-20 lg:absolute lg:inset-0 lg:mt-40">
           <div class="-mt-2 mb-5">
-            <span x-show="game === 'won'" class="block text-center uppercase text-6xl leading-none text-white font-bold">you win</span>
-            <span x-show="game === 'lost'" class="block text-center uppercase text-6xl leading-none text-white font-bold">you lose</span>
-            <span x-show="game === 'tie'" class="block text-center uppercase text-6xl leading-none text-white font-bold">tie</span>
+            <h2 class="block text-center uppercase text-6xl leading-none text-white font-bold" x-text="game === 'won' || game === 'lost' ? 'you ' + game : game"></h2>
           </div>
           <button @click="reset()" class="mx-auto block bg-white rounded-lg text-dark py-4 px-16 uppercase tracking-widest leading-none hover:text-rock-start ease-in-out duration-150">play again</button>
         </div>
-      </div>
+      </section>
     </div>
 
-    <div class="w-full">
+    <section class="w-full">
         <button type="button" @click="rules = true" class="mx-auto block border-2 border-light/60 rounded-lg text-white py-3 px-10 uppercase tracking-widest leading-none md:mr-0 md:ml-auto">Rules</button>
         <div x-show="rules === true" style="display: none;" class="fixed inset-0 flex justify-center items-center">
           <div x-show="rules === true" x-transition.opacity class="absolute inset-0 bg-black/50"></div>
@@ -145,7 +143,7 @@
             </div>
           </div>
         </div>
-    </div>
+    </section>
   </main>
 
   <footer class="mx-auto pb-2 text-center text-dark text-xs mx-auto">

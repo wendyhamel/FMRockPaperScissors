@@ -18,6 +18,15 @@ tailwind.config = {
               'bottom-xl' : 'inset 0 -12px 0 0 rgb(0,0,0)',
               'fade' : '0px 0px 0px 18px rgba(255,255,255,0.04), 0px 0px 0px 46px rgba(255,255,255,0.035), 0px 0px 0px 80px rgba(255,255,255,0.02)'
             },
+            keyframes: {
+                bubble: {
+                    '0%, 100%': { transform: 'scale(1.1)' },
+                    '50%': { transform: 'scale(0.8)' },
+                }
+            },
+            animation: {
+                bubble: 'bubble 1s ease-in-out infinite',
+            },
             colors: {
                 'paper-shadow' : 'rgb(38, 68, 170)',
                 'paper-start' : 'hsl(230, 89%, 62%)',
